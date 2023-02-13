@@ -4,6 +4,7 @@ metadata:
   name: uptime-kuma-http
   namespace: uptime-kuma
   annotations:
+    kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
     traefik.ingress.kubernetes.io/router.middlewares: default-redirectscheme@kubernetescrd
 spec:
