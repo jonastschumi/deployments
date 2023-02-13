@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nginx1-test
+  name: nginx1-test-https
   namespace: nginx1-test
   annotations:
     kubernetes.io/ingress.class: traefik
