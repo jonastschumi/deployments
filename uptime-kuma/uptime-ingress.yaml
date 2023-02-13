@@ -4,11 +4,11 @@ metadata:
   name: uptime-kuma
   namespace: uptime-kuma
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.tls.certresolver: cloudflare
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
 spec:
   rules:
   - host: "uptime.tschumi.me"
