@@ -4,7 +4,7 @@ metadata:
   name: flex-authentication-pvc
   namespace: flex-authentication
     labels:
-    app: postgres
+    app: flex-authentication
 spec:
   storageClassName: manual
   accessModes:
