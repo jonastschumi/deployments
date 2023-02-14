@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: flex-authentication-pvc
   namespace: flex-authentication
-    labels:
+  labels:
     app: flex-authentication
 spec:
   accessModes:
