@@ -24,17 +24,17 @@ spec:
         - name: POSTGRES_DB
           valueFrom:
             secretKeyRef:
-              name: database-secret-config
+              name: flex-authentication-db
               key: dbname
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
-              name: database-secret-config
+              name: flex-authentication-db
               key: username
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: database-secret-config
+              name: flex-authentication-db
               key: password
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
