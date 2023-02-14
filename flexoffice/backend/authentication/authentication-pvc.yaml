@@ -3,11 +3,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: flex-authentication-pvc
   namespace: flex-authentication
-  labels:
-    app: flex-authentication
+    labels:
+    app: postgres
 spec:
+  storageClassName: manual
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 100M
