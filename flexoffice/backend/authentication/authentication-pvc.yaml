@@ -6,7 +6,6 @@ metadata:
     labels:
     app: flex-authentication
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
