@@ -22,4 +22,4 @@ spec:
         image: ghcr.io/jonastschumi/flexoffice_authentication:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 9090
+        - containerPort: 8081

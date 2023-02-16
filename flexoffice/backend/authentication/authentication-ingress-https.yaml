@@ -19,7 +19,7 @@ spec:
           service:
             name: flex-authentication
             port:
-              number: 3001
+              number: 8081
   tls:
   - hosts:
     - "api.flex.tschumi.me"
