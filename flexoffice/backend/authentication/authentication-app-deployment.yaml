@@ -4,16 +4,16 @@ metadata:
   name: flex-app-authentication
   namespace: flex-authentication
   labels:
-    app: flex-app-authentication
+    app: flex-authentication
 spec:
   selector:
     matchLabels:
-      app: flex-app-authentication
+      app: flex-authentication
   replicas: 1
   template:
     metadata:
       labels:
-        app: flex-app-authentication
+        app: flex-authentication
     spec:
       imagePullSecrets:
       - name: github-secret
