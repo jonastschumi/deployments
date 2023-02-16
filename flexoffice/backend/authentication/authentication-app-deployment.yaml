@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flex-app-authentication
+  namespace: flex-authentication
+  labels:
+    app: flex-app-authentication
+spec:
+  selector:
+    matchLabels:
+      app: flex-app-authentication
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flex-app-authentication
+    spec:
+      imagePullSecrets:
+      - name: github-secret
+      containers:
+      - name: flexoffice_authentication
+        image: ghcr.io/jonastschumi/flexoffice_authentication:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9090
