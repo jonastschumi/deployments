@@ -18,7 +18,7 @@ spec:
       imagePullSecrets:
       - name: github-secret
       containers:
-      - name: flexoffice_authentication
+      - name: flexoffice-authentication
         image: ghcr.io/jonastschumi/flexoffice_authentication:latest
         imagePullPolicy: Always
         ports:
