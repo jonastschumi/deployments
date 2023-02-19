@@ -23,3 +23,21 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
+        env:
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: flex-authentication-db
+              key: dbname
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: flex-authentication-db
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: flex-authentication-db
+              key: password
+        - name: DB_HOST
+          value: flex-postgres-authentication
