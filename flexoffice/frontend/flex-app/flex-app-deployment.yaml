@@ -6,6 +6,7 @@ metadata:
   labels:
     app: flex-app
 spec:
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: flex-app

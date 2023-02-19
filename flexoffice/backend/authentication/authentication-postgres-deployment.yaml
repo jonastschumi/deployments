@@ -6,6 +6,7 @@ metadata:
   labels:
     app: flex-postgres-authentication
 spec:
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: flex-postgres-authentication
