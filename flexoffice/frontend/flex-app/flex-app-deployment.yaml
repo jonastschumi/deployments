@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flex-app
+  namespace: flex-app
+  labels:
+    app: flex-app
+spec:
+  selector:
+    matchLabels:
+      app: flex-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flex-app
+    spec:
+      imagePullSecrets:
+      - name: github-secret
+      containers:
+      - name: flex-app
+        image: ghcr.io/jonastschumi/flexoffice_flex-app:0.0.57
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
