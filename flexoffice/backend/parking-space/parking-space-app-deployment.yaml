@@ -23,7 +23,7 @@ spec:
         image: ghcr.io/jonastschumi/flexoffice_parking-space:0.0.67
         imagePullPolicy: Always
         ports:
-        - containerPort: 8081
+        - containerPort: 8082
         env:
         - name: DB_NAME
           valueFrom:
