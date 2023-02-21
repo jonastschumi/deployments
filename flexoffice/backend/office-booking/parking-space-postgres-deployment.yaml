@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flex-postgres-parking-space
+  namespace: flex-parking-space
+  labels:
+    app: flex-postgres-parking-space
+spec:
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: flex-postgres-parking-space
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flex-postgres-parking-space
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15.2-alpine
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: flex-parking-space-db
+              key: dbname
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: flex-parking-space-db
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: flex-parking-space-db
+              key: password
+        volumeMounts:
+        - mountPath: /var/lib/postgresql
+          name: postgredb
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: flex-parking-space-pvc

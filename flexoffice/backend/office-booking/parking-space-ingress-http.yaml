@@ -1,21 +1,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: flex-authentication-http
-  namespace: flex-authentication
+  name: flex-parking-space-http
+  namespace: flex-parking-space
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web
-    traefik.ingress.kubernetes.io/router.middlewares: flex-authentication-redirectscheme@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: flex-parking-space-redirectscheme@kubernetescrd
 spec:
   rules:
     - host: "api.flex.tschumi.me"
       http:
         paths:
-          - path: /auth
+          - path: /parking-space
             pathType: Prefix
             backend:
               service:
-                name: flex-authentication
+                name: flex-parking-space
                 port:
-                  number: 8081
+                  number: 8082
