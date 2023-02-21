@@ -13,7 +13,7 @@ spec:
   - host: "api.flex.tschumi.me"
     http:
       paths:
-      - path: /
+      - path: /parking-space
         pathType: Prefix
         backend:
           service:
