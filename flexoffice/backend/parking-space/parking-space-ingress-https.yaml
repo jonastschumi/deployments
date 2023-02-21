@@ -19,7 +19,7 @@ spec:
           service:
             name: flex-parking-space
             port:
-              number: 8082
+              number: 8083
   tls:
   - hosts:
     - "api.flex.tschumi.me"
