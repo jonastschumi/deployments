@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flex-postgres-office-booking
+  namespace: flex-office-booking
+  labels:
+    app: flex-postgres-office-booking
+spec:
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: flex-postgres-office-booking
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flex-postgres-office-booking
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15.2-alpine
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: flex-office-booking-db
+              key: dbname
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: flex-office-booking-db
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: flex-office-booking-db
+              key: password
+        volumeMounts:
+        - mountPath: /var/lib/postgresql
+          name: postgredb
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: flex-office-booking-pvc

@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: flex-office-booking
+  namespace: flex-office-booking
+spec:
+  secretName: flex-office-booking
+  issuerRef:
+    name: acme-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - api.flex.tschumi.me
