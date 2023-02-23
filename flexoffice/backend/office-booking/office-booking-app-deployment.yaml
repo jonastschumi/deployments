@@ -20,7 +20,7 @@ spec:
       - name: github-secret
       containers:
       - name: flexoffice-office-booking
-        image: ghcr.io/jonastschumi/flexoffice_office-booking:0.0.73
+        image: ghcr.io/jonastschumi/flexoffice_office-booking:0.0.74
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
