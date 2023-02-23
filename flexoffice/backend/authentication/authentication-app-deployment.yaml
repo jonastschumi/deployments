@@ -20,7 +20,7 @@ spec:
       - name: github-secret
       containers:
       - name: flexoffice-authentication
-        image: ghcr.io/jonastschumi/flexoffice_authentication:refs/heads/main
+        image: ghcr.io/jonastschumi/flexoffice_authentication:0.0.71
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
