@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flex-test-authentication-http
+  namespace: flex-test-authentication
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: flex-test-authentication-redirectscheme@kubernetescrd
+spec:
+  rules:
+    - host: "api.flex.test.tschumi.me"
+      http:
+        paths:
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service:
+                name: flex-test-authentication
+                port:
+                  number: 8081

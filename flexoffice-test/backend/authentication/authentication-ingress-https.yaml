@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flex-test-authentication-https
+  namespace: flex-test-authentication
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.certresolver: cloudflare
+spec:
+  rules:
+  - host: "api.flex.test.tschumi.me"
+    http:
+      paths:
+      - path: /auth
+        pathType: Prefix
+        backend:
+          service:
+            name: flex-test-authentication
+            port:
+              number: 8081
+  tls:
+  - hosts:
+    - "api.flex.test.tschumi.me"
+    secretName: flex-test-authentication

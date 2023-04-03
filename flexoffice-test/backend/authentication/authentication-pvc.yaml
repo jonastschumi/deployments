@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: flex-test-authentication-pvc
+  namespace: flex-test-authentication
+  labels:
+    app: flex-test-authentication
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100M

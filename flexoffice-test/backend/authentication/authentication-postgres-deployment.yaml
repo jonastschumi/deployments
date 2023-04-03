@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flex-test-postgres-authentication
+  namespace: flex-test-authentication
+  labels:
+    app: flex-test-postgres-authentication
+spec:
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: flex-test-postgres-authentication
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flex-test-postgres-authentication
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15.2-alpine
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-authentication-db
+              key: dbname
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-authentication-db
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-authentication-db
+              key: password
+        volumeMounts:
+        - mountPath: /var/lib/postgresql
+          name: postgredb
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: flex-test-authentication-pvc

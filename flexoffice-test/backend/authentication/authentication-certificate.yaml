@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: flex-test-authentication
+  namespace: flex-test-authentication
+spec:
+  secretName: flex-test-authentication
+  issuerRef:
+    name: acme-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - api.flex.test.tschumi.me

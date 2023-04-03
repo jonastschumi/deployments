@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flex-test-app-authentication
+  namespace: flex-test-authentication
+  labels:
+    app: flex-test-authentication
+spec:
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: flex-test-authentication
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flex-test-authentication
+    spec:
+      imagePullSecrets:
+      - name: github-secret
+      containers:
+      - name: flexoffice-authentication
+        image: ghcr.io/jonastschumi/flexoffice_authentication:0.0.70
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        env:
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-authentication-db
+              key: dbname
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-authentication-db
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-authentication-db
+              key: password
+        - name: DB_HOST
+          value: flex-test-postgres-authentication
