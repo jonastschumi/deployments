@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: flex-test-web
+  namespace: flex-test-web
+spec:
+  secretName: flex-test-web
+  issuerRef:
+    name: acme-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - www.flex.test.tschumi.me

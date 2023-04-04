@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flex-test-web-http
+  namespace: flex-test-web
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: flex-test-app-redirectscheme@kubernetescrd
+spec:
+  rules:
+    - host: "www.flex.test.tschumi.me"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: flex-test-web
+                port:
+                  number: 80
