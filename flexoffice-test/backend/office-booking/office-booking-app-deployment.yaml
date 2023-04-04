@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flex-test-app-office-booking
+  namespace: flex-test-office-booking
+  labels:
+    app: flex-test-office-booking
+spec:
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: flex-test-office-booking
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flex-test-office-booking
+    spec:
+      imagePullSecrets:
+      - name: github-secret
+      containers:
+      - name: flexoffice-office-booking
+        image: ghcr.io/jonastschumi/flexoffice_office-booking:0.0.70
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        env:
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-office-booking-db
+              key: dbname
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-office-booking-db
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-office-booking-db
+              key: password
+        - name: DB_HOST
+          value: flex-test-postgres-office-booking

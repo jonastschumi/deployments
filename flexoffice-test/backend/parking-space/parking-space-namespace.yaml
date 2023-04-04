@@ -1,0 +1,4 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flex-test-parking-space

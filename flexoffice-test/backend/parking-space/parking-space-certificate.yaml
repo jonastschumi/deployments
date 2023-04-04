@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: flex-test-parking-space
+  namespace: flex-test-parking-space
+spec:
+  secretName: flex-test-parking-space
+  issuerRef:
+    name: acme-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - api.flex.test.tschumi.me

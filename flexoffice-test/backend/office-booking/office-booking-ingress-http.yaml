@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flex-test-office-booking-http
+  namespace: flex-test-office-booking
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.middlewares: flex-test-office-booking-redirectscheme@kubernetescrd
+spec:
+  rules:
+    - host: "api.flex.test.tschumi.me"
+      http:
+        paths:
+          - path: /office-booking
+            pathType: Prefix
+            backend:
+              service:
+                name: flex-test-office-booking
+                port:
+                  number: 8082

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flex-test-parking-space
+  namespace: flex-test-parking-space
+spec:
+  selector:
+    app: flex-test-parking-space
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8083

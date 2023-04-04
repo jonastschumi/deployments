@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flex-test-app-parking-space
+  namespace: flex-test-parking-space
+  labels:
+    app: flex-test-parking-space
+spec:
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: flex-test-parking-space
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flex-test-parking-space
+    spec:
+      imagePullSecrets:
+      - name: github-secret
+      containers:
+      - name: flexoffice-parking-space
+        image: ghcr.io/jonastschumi/flexoffice_parking-space:0.0.70
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8083
+        env:
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-parking-space-db
+              key: dbname
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-parking-space-db
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: flex-test-parking-space-db
+              key: password
+        - name: DB_HOST
+          value: flex-test-postgres-parking-space
