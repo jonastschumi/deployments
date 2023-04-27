@@ -42,3 +42,10 @@ spec:
               key: password
         - name: DB_HOST
           value: flex-postgres-parking-space
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    minReadySeconds: 60
+    
