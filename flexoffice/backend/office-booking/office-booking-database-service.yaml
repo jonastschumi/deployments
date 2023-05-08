@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flex-office-booking-database
+  namespace: flex-office-booking
+spec:
+  selector:
+    app: flex-postgres-office-booking
+  type: ClusterIP
+  ports:
+    - name: flex-postgres-office-booking
+      port: 5432
