@@ -40,6 +40,21 @@ spec:
             secretKeyRef:
               name: flex-test-parking-space-db
               key: password
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: flex-parking-space-app-secret
+              key: jwt_secret
+        - name: JWT_EXPIRATION
+          valueFrom:
+            secretKeyRef:
+              name: flex-parking-space-app-secret
+              key: jwt_expiration
+        - name: AUTH_JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: flex-parking-space-app-secret
+              key: auth_jwt_secret
         - name: DB_HOST
           value: flex-test-postgres-parking-space
   strategy:

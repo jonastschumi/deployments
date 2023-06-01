@@ -40,6 +40,21 @@ spec:
             secretKeyRef:
               name: flex-test-office-booking-db
               key: password
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: flex-office-test-app-secret
+              key: jwt_secret
+        - name: JWT_EXPIRATION
+          valueFrom:
+            secretKeyRef:
+              name: flex-office-test-app-secret
+              key: jwt_expiration
+        - name: AUTH_JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: flex-office-test-app-secret
+              key: auth_jwt_secret
         - name: DB_HOST
           value: flex-test-postgres-office-booking
   strategy:
