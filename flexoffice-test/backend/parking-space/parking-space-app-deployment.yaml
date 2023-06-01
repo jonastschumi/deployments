@@ -57,6 +57,8 @@ spec:
               key: auth_jwt_secret
         - name: DB_HOST
           value: flex-test-postgres-parking-space
+        - name: AUTH_URL
+          value: https://api.flex.test.tschumi.me/auth/v1/
   strategy:
     type: RollingUpdate
     rollingUpdate:
