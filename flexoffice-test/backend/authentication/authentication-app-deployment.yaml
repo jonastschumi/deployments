@@ -43,12 +43,12 @@ spec:
         - name: JWT_SECRET
           valueFrom:
             secretKeyRef:
-              name: flex-test-auth-app-secret
+              name: flex-auth-test-app-secret
               key: jwt_secret
         - name: JWT_EXPIRATION
           valueFrom:
             secretKeyRef:
-              name: flex-test-auth-app-secret
+              name: flex-auth-test-app-secret
               key: jwt_expiration
         - name: DB_HOST
           value: flex-test-postgres-authentication
