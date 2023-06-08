@@ -20,7 +20,7 @@ spec:
       - name: github-secret
       containers:
       - name: flex-test-app
-        image: ghcr.io/jonastschumi/flexoffice_integration_flex-app:p0.0.77
+        image: ghcr.io/jonastschumi/flexoffice_integration_flex-app:p0.0.78
         imagePullPolicy: Always
         ports:
         - containerPort: 80
