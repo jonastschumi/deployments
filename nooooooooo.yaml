@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: flex-authentication-secret
+  namespace: flex-authentication
+type: Opaque
+data:
+  dbname: flex-authentication
+  username: test
+  password: asdfdadfgdfhwfgsd
